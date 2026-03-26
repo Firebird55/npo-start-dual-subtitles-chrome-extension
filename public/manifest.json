@@ -25,11 +25,15 @@
       }
     }
   },
-  "host_permissions": ["https://translate.googleapis.com/*"],
+  "host_permissions": [
+    "https://api-free.deepl.com/*",
+    "https://api.anthropic.com/*",
+    "https://api.openai.com/*"
+  ],
   "content_scripts": [
     {
       "js": ["content.js"],
-      "matches": ["*://npo.nl/*"]
+      "matches": ["*://npo.nl/*", "*://www.npostart.nl/*", "*://npo.start.nl/*"]
     }
   ],
   "permissions": ["activeTab", "storage"]
