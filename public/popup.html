@@ -4,13 +4,27 @@
   </head>
   <body class="popup">
     <h1>NPO Start Dual Subtitles</h1>
-    <!-- Add Dropdown for language selection -->
-    <label for="language-selector">Select Target Language:</label>
+    <label for="provider-selector">Translation provider</label>
+    <select id="provider-selector"></select>
+
+    <label for="api-key-input">API key</label>
+    <input id="api-key-input" type="password" placeholder="Paste your API key" />
+
+    <label for="language-selector">Target language</label>
     <select id="language-selector"></select>
+
+    <div id="status-indicator" class="status-indicator">Add an API key to enable translation.</div>
+
+    <div class="buttons compact">
+      <button id="save-button">Save Settings</button>
+      <button id="test-button">Test Connection</button>
+    </div>
+
     <div class="buttons">
       <button id="activate-button">Activate Translation</button>
       <button id="one-click-button">Activate Translation V2 (One Click Way)</button>
     </div>
+
     <hr>
     <div class="contact">
       <p>If you come across any issues or have questions, feel free to reach out to the developer:</p>
@@ -27,17 +41,24 @@
       }
       label {
         font-weight: bold;
+        margin-top: 12px;
+        display: block;
       }
-      select {
-        padding: 5px;
+      select, input {
+        width: 100%;
+        padding: 8px;
+        font-size: 14px;
+        border-radius: 3px;
+        border: 1px solid #ccc;
+        box-sizing: border-box;
       }
       h1 {
         font-size: 24px;
         margin-bottom: 20px;
       }
       .popup {
-        min-width: 300px;
-        min-height: 200px;
+        min-width: 340px;
+        min-height: 280px;
         background-color: #fff;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -46,33 +67,17 @@
         font-size: 20px;
         margin-bottom: 10px;
       }
-      .popup label {
-        font-size: 14px;
-        margin-bottom: 5px;
-        display: block;
-      }
-      .popup select {
-        width: 100%;
-        padding: 5px;
-        font-size: 14px;
-        border-radius: 3px;
-        border: 1px solid #ccc;
-      }
-      .popup select:focus {
-        outline: none;
-        border-color: #007bff;
-      }
-      .popup select option {
-        padding: 5px;
-      }
       .buttons {
-        margin-top: 32px;
+        margin-top: 20px;
         gap: 10px;
         display: flex;
         flex-direction: column;
       }
+      .buttons.compact {
+        flex-direction: row;
+      }
       .popup button {
-        height: 32px;
+        height: 36px;
         padding: 5px 10px;
         background-color: #007bff;
         color: white;
@@ -84,8 +89,17 @@
       .popup button:hover {
         background-color: #0056b3;
       }
-      .popup button:active {
-        transform: scale(0.98);
+      .status-indicator {
+        margin-top: 12px;
+        padding: 8px 10px;
+        border-radius: 4px;
+        background: #f1f3f5;
+        font-size: 12px;
+        color: #333;
+      }
+      .status-indicator[data-success="true"] {
+        background: #e7f7ed;
+        color: #146c2e;
       }
       .contact {
         margin-top: 20px;

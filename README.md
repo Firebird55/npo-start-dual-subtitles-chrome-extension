@@ -1,72 +1,46 @@
 # NPO Start Dual Subtitles
 
-NPO Start Dual Subtitles is a Chrome extension designed for language learning. It allows users to view dual subtitles on NPO Start, translating Dutch subtitles into English.
+NPO Start Dual Subtitles is a Chrome extension designed for language learning. It keeps the original Dutch subtitles on-screen and can add an English or Mandarin translation underneath.
 
 ## Features
 
 - Automatically monitors subtitle changes on NPO Start.
-- Translates Dutch subtitles to English using Google Translate API.
-- Displays translated subtitles alongside the original ones.
+- Preserves the original Dutch subtitle line and adds a translated second line.
+- Supports user-provided DeepL, Anthropic Claude, or OpenAI API keys.
+- Batches subtitle cues to reduce API calls and caches translated episodes locally.
+- Falls back to Dutch-only subtitles if translation is not configured or a request fails.
 
 ## Installation
 
 1. Clone the repository to your local machine:
-    ```sh
-    git clone https://github.com/yourusername/npo-subtitle-translator.git
-    ```
-
+   ```sh
+   git clone https://github.com/yourusername/npo-subtitle-translator.git
+   ```
 2. Install the required packages and build:
-    ```sh
-    npm i & npm run build
-    ```
-
-3. Open Chrome and navigate to `chrome://extensions/`
-
-4. Enable "Developer mode" by toggling the switch in the top right corner.
-
-5. Click on "Load unpacked" and select the `dist` folder.
+   ```sh
+   npm install
+   npm run build
+   ```
+3. Open Chrome and navigate to `chrome://extensions/`.
+4. Enable **Developer mode**.
+5. Click **Load unpacked** and select the `dist` folder.
 
 ## Usage
 
-1. Navigate to [NPO Start](https://npo.nl/start/).
+1. Navigate to [NPO Start](https://npo.start.nl/) and open a video.
+2. Turn on the Dutch subtitles in the player settings.
+3. Open the extension popup.
+4. Choose **DeepL API Free**, **Anthropic Claude API**, or **OpenAI API**.
+5. Paste your own API key, select **English** or **中文 / Mandarin**, and click **Save Settings**.
+6. Click **Test Connection** to confirm the selected provider works.
+7. Click **Activate Translation** or use the one-click flow.
 
-2. Open a video either by selecting a live channel or an existing video.
+## Notes
 
-3. Turn on the subtitles by selecting `Gear (Settings) Icon` > `Ondertiteling` > `Nederlands`.
-
-4. Click on the extension icon in the Chrome toolbar or press `Ctrl + B` (or `Command + B` on Mac).
-
-5. The extension will start monitoring subtitle changes and translate them automatically.
+- The extension stores provider settings in `chrome.storage.sync`.
+- Per-video translated subtitle caches are stored in `chrome.storage.local`.
+- No API keys are bundled with the extension.
 
 ## License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
-
-## Contributing
-
-1. Fork the repository.
-
-2. Create a new branch:
-    ```sh
-    git checkout -b feature/your-feature-name
-    ```
-
-3. Make your changes and commit them:
-    ```sh
-    git commit -m 'Add some feature'
-    ```
-
-4. Push to the branch:
-    ```sh
-    git push origin feature/your-feature-name
-    ```
-
-5. Open a pull request.
-
-## Disclaimer
-
-This project is for educational purposes only. It is not intended for commercial use.
-
-## Contact
-
-For any questions or suggestions, please open an issue.
